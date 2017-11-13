@@ -105,14 +105,14 @@ $(document).ready(function() {
     });
   }
 
-  function handleTaskDeleteRequest() {
+function handleTaskDeleteRequest() {
     var parentEl = $(this).parents('[data-task-id]');
     var taskId = parentEl.attr('data-task-id');
-    var requestUrl = apiRoot + 'deleteTask';
+    var requestUrl = apiRoot;
 
     $.ajax({
-      url: requestUrl + '?' + $.param({
-        taskId: taskId
+      url: requestUrl + $.param({
+        taskId
       }),
       method: 'DELETE',
       success: function() {
@@ -120,6 +120,22 @@ $(document).ready(function() {
       }
     })
   }
+
+  // function handleTaskDeleteRequest() {
+  //   var parentEl = $(this).parents('[data-task-id]');
+  //   var taskId = parentEl.attr('data-task-id');
+  //   var requestUrl = apiRoot + 'deleteTask';
+
+  //   $.ajax({
+  //     url: requestUrl + '?' + $.param({
+  //       taskId: taskId
+  //     }),
+  //     method: 'DELETE',
+  //     success: function() {
+  //       parentEl.slideUp(400, function() { parentEl.remove(); });
+  //     }
+  //   })
+  // }
 
   function handleTaskSubmitRequest(event) {
     event.preventDefault();
